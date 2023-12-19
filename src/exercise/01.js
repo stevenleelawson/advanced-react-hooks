@@ -3,19 +3,19 @@
 
 import * as React from 'react'
 
-function Counter({initialCount = 0, step = 1}) {
-  
-  function countReducer(state, newState) {
-    console.log('state', state)
-    console.log('noostate', newState)
-    return newState;
-  }
 
+// better to create a separate function because can forward dispatch as props
+
+// The 1st argument is called "state" - the current value of count
+// The 2nd argument is called "newState" - the value passed to setCount
+function countReducer(state, newState) {
+  return newState;
+}
+
+function Counter({initialCount = 0, step = 1}) {
   const [count, setCount] = React.useReducer(countReducer, initialCount)
 
   
-  // The 1st argument is called "state" - the current value of count
-  // The 2nd argument is called "newState" - the value passed to setCount
   const increment = () => setCount(count + step)
   return <button onClick={increment}>{count}</button>
 }
