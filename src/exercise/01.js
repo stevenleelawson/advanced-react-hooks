@@ -7,16 +7,17 @@ import * as React from 'react'
 // better to create a separate function because can forward dispatch as props
 
 // The 1st argument is called "state" - the current value of count
-// The 2nd argument is called "newState" - the value passed to setCount
-function countReducer(state, newState) {
-  return newState;
+// The 2nd argument is called "newState" - the value passed to setCount ie ACTION
+function countReducer(state, action) {
+  return state + action;
 }
 
 function Counter({initialCount = 0, step = 1}) {
-  const [count, setCount] = React.useReducer(countReducer, initialCount)
+  // changeCount is the dispatch function
+  const [count, changeCount] = React.useReducer(countReducer, initialCount)
 
   
-  const increment = () => setCount(count + step)
+  const increment = () => changeCount(step)
   return <button onClick={increment}>{count}</button>
 }
 
