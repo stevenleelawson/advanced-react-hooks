@@ -32,10 +32,11 @@ function Counter({initialCount = 0, step = 3}) {
   const [state, dispatch] = React.useReducer(countReducer, {
     count: initialCount,
   })
-  const {count} = state
+  console.log('country', state)
+  // const {count} = state
   const increment = () => dispatch({type: 'DECREMENT', step})
 
-  return <button onClick={increment}>{count}</button>
+  return <button onClick={increment}>{state.count}</button>
 }
 
 function App() {
